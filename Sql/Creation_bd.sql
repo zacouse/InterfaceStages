@@ -22,8 +22,8 @@ CREATE TABLE MilieuStage (
 	Pays VARCHAR(100),
 	NoTelephone VARCHAR(20),
 	Etat BIT,
-	DateHeureCreation DATETIME,
-	DateHeureModification DATETIME
+	DateHeureCreation DATETIME DEFAULT GetDate(),
+	DateHeureModification DATETIME DEFAULT GetDate()
 )
 GO
 
@@ -39,8 +39,8 @@ CREATE TABLE Stage (
 	DateDebut DATETIME,
 	DateFin DATETIME,
 	Etat BIT,
-	DateHeureCreation DATETIME,
-	DateHeureModification DATETIME,
+	DateHeureCreation DATETIME DEFAULT GetDate(),
+	DateHeureModification DATETIME DEFAULT GetDate(),
 	FOREIGN KEY (IDMilieuStage) REFERENCES MilieuStage(IDMilieuStage) 
 )
 GO
@@ -50,8 +50,8 @@ CREATE TABLE Restriction (
 	Titre VARCHAR(100),
 	[Description] VARCHAR(1000),
 	Etat BIT,
-	DateHeureCreation DATETIME,
-	DateHeureModification DATETIME
+	DateHeureCreation DATETIME DEFAULT GetDate(),
+	DateHeureModification DATETIME DEFAULT GetDate()
 )
 GO
 
@@ -62,8 +62,8 @@ CREATE TABLE MilieuStageRestriction (
 	Titre VARCHAR(100),
 	[Description] VARCHAR(1000),
 	Etat BIT,
-	DateHeureCreation DATETIME,
-	DateHeureModification DATETIME,
+	DateHeureCreation DATETIME DEFAULT GetDate(),
+	DateHeureModification DATETIME DEFAULT GetDate(),
 	FOREIGN KEY (IDMilieuStage) REFERENCES MilieuStage(IDMilieuStage),
 	FOREIGN KEY (IDRestriction) REFERENCES Restriction(IDRestriction)
 )
@@ -76,8 +76,8 @@ CREATE TABLE StageRestriction (
 	Titre VARCHAR(100),
 	[Description] VARCHAR(1000),
 	Etat BIT,
-	DateHeureCreation DATETIME,
-	DateHeureModification DATETIME,
+	DateHeureCreation DATETIME DEFAULT GetDate(),
+	DateHeureModification DATETIME DEFAULT GetDate(),
 	FOREIGN KEY (IDStage) REFERENCES Stage(IDStage),
 	FOREIGN KEY (IDRestriction) REFERENCES Restriction(IDRestriction)
 )
@@ -91,8 +91,8 @@ CREATE TABLE PersonneContact (
 	NoTelephone VARCHAR(20),
 	Courriel VARCHAR(50),
 	Etat BIT,
-	DateHeureCreation DATETIME,
-	DateHeureModification DATETIME
+	DateHeureCreation DATETIME DEFAULT GetDate(),
+	DateHeureModification DATETIME DEFAULT GetDate()
 )
 GO
 
@@ -106,8 +106,8 @@ CREATE TABLE PersonneContactMilieuStage (
 	NoTelephone VARCHAR(20),
 	Courriel VARCHAR(50),
 	Etat BIT,
-	DateHeureCreation DATETIME,
-	DateHeureModification DATETIME,
+	DateHeureCreation DATETIME DEFAULT GetDate(),
+	DateHeureModification DATETIME DEFAULT GetDate(),
 	FOREIGN KEY (IDPersonneContact) REFERENCES PersonneContact(IDPersonneContact),
 	FOREIGN KEY (IDMilieuStage) REFERENCES MilieuStage(IDMilieuStage)
 )
@@ -123,8 +123,8 @@ CREATE TABLE PersonneContactStage (
 	NoTelephone VARCHAR(20),
 	Courriel VARCHAR(50),
 	Etat BIT,
-	DateHeureCreation DATETIME,
-	DateHeureModification DATETIME,
+	DateHeureCreation DATETIME DEFAULT GetDate(),
+	DateHeureModification DATETIME DEFAULT GetDate(),
 	FOREIGN KEY (IDPersonneContact) REFERENCES PersonneContact(IDPersonneContact),
 	FOREIGN KEY (IDStage) REFERENCES Stage(IDStage)
 )
@@ -135,8 +135,8 @@ CREATE TABLE Programme (
 	Nom VARCHAR(100),
 	Sigle VARCHAR(15),
 	Etat BIT,
-	DateHeureCreation DATETIME,
-	DateHeureModification DATETIME
+	DateHeureCreation DATETIME DEFAULT GetDate(),
+	DateHeureModification DATETIME DEFAULT GetDate()
 )
 GO
 
@@ -145,8 +145,8 @@ CREATE TABLE ProgrammeStage (
 	IDProgramme INT,
 	IDStage INT,
 	Etat BIT,
-	DateHeureCreation DATETIME,
-	DateHeureModification DATETIME,
+	DateHeureCreation DATETIME DEFAULT GetDate(),
+	DateHeureModification DATETIME DEFAULT GetDate(),
 	FOREIGN KEY (IDProgramme) REFERENCES Programme(IDProgramme),
 	FOREIGN KEY (IDStage) REFERENCES Stage(IDStage)
 )
@@ -161,8 +161,8 @@ CREATE TABLE Etudiant (
 	Courriel VARCHAR(100),
 	Photo VARBINARY(8000),
 	Etat BIT,
-	DateHeureCreation DATETIME,
-	DateHeureModification DATETIME
+	DateHeureCreation DATETIME DEFAULT GetDate(),
+	DateHeureModification DATETIME DEFAULT GetDate()
 )
 
 GO
@@ -172,8 +172,8 @@ CREATE TABLE StageEtudiant (
 	IDStage INT,
 	IDEtudiant INT,
 	Etat BIT,
-	DateHeureCreation DATETIME,
-	DateHeureModification DATETIME,
+	DateHeureCreation DATETIME DEFAULT GetDate(),
+	DateHeureModification DATETIME DEFAULT GetDate(),
 	FOREIGN KEY (IDStage) REFERENCES Stage(IDStage),
 	FOREIGN KEY (IDEtudiant) REFERENCES Etudiant(IDEtudiant)
 )
@@ -184,8 +184,8 @@ CREATE TABLE ChoixStageEtudiant (
 	IDEtudiant INT,
 	Ordre TINYINT,
 	Etat BIT,
-	DateHeureCreation DATETIME,
-	DateHeureModification DATETIME,
+	DateHeureCreation DATETIME DEFAULT GetDate(),
+	DateHeureModification DATETIME DEFAULT GetDate(),
 	FOREIGN KEY (IDStage) REFERENCES Stage(IDStage),
 	FOREIGN KEY (IDEtudiant) REFERENCES Etudiant(IDEtudiant)
 )
