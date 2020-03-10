@@ -189,3 +189,11 @@ CREATE TABLE ChoixStageEtudiant (
 	FOREIGN KEY (IDStage) REFERENCES Stage(IDStage),
 	FOREIGN KEY (IDEtudiant) REFERENCES Etudiant(IDEtudiant)
 )
+
+INSERT INTO Programme([Nom], [Sigle], [Etat])
+VALUES ('Hamon','123',1)
+		,('Stand','456',1)
+
+INSERT INTO Etudiant([IDProgramme], [NoDA], [Prenom], [Nom], [Courriel], [Photo], [Etat])
+VALUES (1,'820001','Jonathan','Joestar','',NULL,1)
+		,(2,'950003','Jotaro','Kujo','',NULL,1)

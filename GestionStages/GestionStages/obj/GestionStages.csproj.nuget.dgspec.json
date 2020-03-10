@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\adminesp\\Desktop\\GestionStages\\GestionStages\\GestionStages.csproj": {}
+    "C:\\Users\\adminesp\\Documents\\InterfaceStages\\GestionStages\\GestionStages\\GestionStages.csproj": {}
   },
   "projects": {
-    "C:\\Users\\adminesp\\Desktop\\GestionStages\\GestionStages\\GestionStages.csproj": {
+    "C:\\Users\\adminesp\\Documents\\InterfaceStages\\GestionStages\\GestionStages\\GestionStages.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\adminesp\\Desktop\\GestionStages\\GestionStages\\GestionStages.csproj",
+        "projectUniqueName": "C:\\Users\\adminesp\\Documents\\InterfaceStages\\GestionStages\\GestionStages\\GestionStages.csproj",
         "projectName": "GestionStages",
-        "projectPath": "C:\\Users\\adminesp\\Desktop\\GestionStages\\GestionStages\\GestionStages.csproj",
+        "projectPath": "C:\\Users\\adminesp\\Documents\\InterfaceStages\\GestionStages\\GestionStages\\GestionStages.csproj",
         "packagesPath": "C:\\Users\\adminesp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\adminesp\\Desktop\\GestionStages\\GestionStages\\obj\\",
+        "outputPath": "C:\\Users\\adminesp\\Documents\\InterfaceStages\\GestionStages\\GestionStages\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -57,6 +57,10 @@
               "target": "Package",
               "version": "[2.2.0, )",
               "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.2.4, )"
             }
           },
           "imports": [
