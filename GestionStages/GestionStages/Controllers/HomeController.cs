@@ -28,7 +28,7 @@ namespace GestionStages.Controllers
             List<Etudiant> lesEtudiants = new List<Etudiant>();
             SqlCommand sql = new SqlCommand();
             conn.Open();
-            sql.Connection = HomeController.conn;
+            sql.Connection = conn;
             sql.CommandText = "EXEC pGetAllActiveEtudiant";
             dr = sql.ExecuteReader();
             while (dr.Read())
