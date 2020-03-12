@@ -13,6 +13,7 @@ namespace GestionStages.Controllers
     {
         public static SqlConnection conn = new SqlConnection("Data Source=localhost;Initial Catalog=GestionStage;Integrated Security=True");
         private SqlDataReader dr;
+        private SqlCommand sql;
         public IActionResult Index()
         {
             return View();
@@ -26,24 +27,40 @@ namespace GestionStages.Controllers
         public IActionResult Test()
         {
             List<Etudiant> lesEtudiants = new List<Etudiant>();
-            SqlCommand sql = new SqlCommand();
-            conn.Open();
-            sql.Connection = conn;
-            sql.CommandText = "EXEC pGetAllActiveEtudiant";
-            dr = sql.ExecuteReader();
-            while (dr.Read())
+            sql = new SqlCommand();
+            try
             {
-                Etudiant etudiant = new Etudiant();
-                etudiant.IDEtudiant = (int)dr.GetValue(0);
-                etudiant.Programme = (string)dr.GetValue(1);
-                etudiant.NoDA = (int)dr.GetValue(2);
-                etudiant.Prenom = (string)dr.GetValue(3);
-                etudiant.Nom = (string)dr.GetValue(4);
-                etudiant.Email = (string)dr.GetValue(5);
-                lesEtudiants.Add(etudiant);
+                conn.Open();
+                sql.Connection = conn;
+                sql.CommandText = "EXEC pGetAllActiveEtudiant";
+                dr = sql.ExecuteReader();
+                while (dr.Read())
+                {
+                    Etudiant etudiant = new Etudiant();
+                    etudiant.IDEtudiant = (int)dr.GetValue(0);
+                    etudiant.Programme = (string)dr.GetValue(1);
+                    etudiant.NoDA = (int)dr.GetValue(2);
+                    etudiant.Prenom = (string)dr.GetValue(3);
+                    etudiant.Nom = (string)dr.GetValue(4);
+                    etudiant.Email = (string)dr.GetValue(5);
+                    lesEtudiants.Add(etudiant);
+                }
+                ViewBag.lesEtudiants = lesEtudiants;
             }
-            conn.Close();
-            ViewBag.lesEtudiants = lesEtudiants;
+            catch
+            {
+                return Error();
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return View();
+        }
+
+        public IActionResult ListeMilieuStage()
+        {
+
             return View();
         }
 

@@ -197,3 +197,12 @@ VALUES ('Hamon','123',1)
 INSERT INTO Etudiant([IDProgramme], [NoDA], [Prenom], [Nom], [Courriel], [Photo], [Etat])
 VALUES (1,'820001','Jonathan','Joestar','',NULL,1)
 		,(2,'950003','Jotaro','Kujo','',NULL,1)
+GO
+
+CREATE PROC pGetAllActiveEtudiant
+AS
+	SELECT Etudiant.[IDEtudiant], Programme.Nom, Etudiant.[NoDA], Etudiant.[Prenom], Etudiant.[Nom], Etudiant.[Courriel], Etudiant.[Photo]
+	FROM Etudiant
+	INNER JOIN Programme ON Etudiant.IDProgramme = Programme.IDProgramme
+	WHERE Etudiant.Etat = 1
+GO
